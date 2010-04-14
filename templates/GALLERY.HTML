@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>ZKPiG nr 26 w Gdańsku</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Mikołaj Sochacki">
+  <meta name="keywords" content="zkpig26 zkpig 26 gdańsk szermierka szkoła podstawowa 79 gimnazjum sportowe">
+  <!-- **** layout stylesheet **** -->
+  <link rel="stylesheet" type="text/css" href="style/style_gallery.css" />
+  <link rel="stylesheet" href="style/lightbox.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="style/prototype.js"></script>
+  <script type="text/javascript" src="style/scriptaculous.js?load=effects,builder"></script>
+  <script type="text/javascript" src="style/lightbox.js"></script>
+  <script type="text/javascript" >
+  var galMarked = 0  //obecnie wybrana galeria
+  var serie = 0 //zapisuje która porcja galerii
+  var numGallery = {{galleryLen}} //ilość galerii 
+  
+  var gallerieArr =  [{% for i in galleries %} [{{i.id_nr}},  {{i.pictures_numb}}, '{{i.path}}', '{{i.title}}', '{{i.description}}' ] , {% endfor %}]
+  
+  var urlsArr = [ {%for j in urlsArr %} {{j}} , {%endfor%} ]
+  
+  
+  function draw_galleries() {
+   
+    HideShow(true) //ukrywam wszystkie galerie
+    //odkrywam właściwe 5 obrazków
+    
+     if (serie*5 + 4 < numGallery){
+      for (i = 0; i < 5; i++) {
+        var j = serie*5 + i
+        var ele_img =  document.getElementById("g" + j.toString())
+        ele_img.style.visibility = "visible"
+        ele_img.style.width = "160px"
+        ele_img.style.border = "1px"
+      }
+    }
+    else {
+     for (i = 1; i < 6 ; i++) {    
+       var j = numGallery - i
+       var ele_img = document.getElementById("g" + j.toString())
+      ele_img.style.visibility = "visible"
+      ele_img.style.width = "160px"
+      ele_img.style.border = "1px"
+     }   
+    }
+    //ustawianie strzałek
+    if (serie == 0 ) {
+      var ele_img =  document.getElementById("gp")
+      ele_img.src = "style/previousno.png"
+      ele_img.title = "brak"
+    } else {
+      var ele_img =  document.getElementById("gp")
+      ele_img.src = "style/previous.png"
+      ele_img.title = "Poprzednie"
+    }
+    if (serie*5 + 4 >= numGallery) {  
+      var ele_img =  document.getElementById("gn")
+      ele_img.src = "style/nextno.png"
+      ele_img.title = "brak"
+    } else {
+      var ele_img =  document.getElementById("gn")
+      ele_img.src = "style/next.png"
+      ele_img.title = "Następne"
+    }
+  }
+  
+  function get_nextGal() {
+    if ((numGallery -1)/5 <= serie) return;
+    serie++
+    draw_galleries()
+  }
+  
+  function get_previousGal() {
+    if (serie == 0) return;
+    serie--
+    draw_galleries()
+  }
+  
+  //ukrywa wszystkie kolumny tabeli z galeriami
+  function HideShow(hide) {
+    var hideStr = ""
+//       if (hide == true) {
+//         hideStr = "hidden"
+//       } 
+//       else { 
+//         hideStr = "visible"
+//       } 
+      for (i = 0; i < numGallery; i++) {
+        var idElement = "g" + i.toString()
+        var tag = document.getElementById(idElement)
+        tag.style.visibility = hideStr
+        if (hide) {
+          tag.style.width = "0px"
+          tag.style.border = "0px"
+        }
+        else { 
+          tag.style.width = "160px"
+          tag.style.border = "1px"
+        }
+      }
+    }
+  
+  function draw_Gallery(nr) {
+    var nrInt = parseInt(nr)
+     var titleGal = document.getElementById("galTitle")
+    titleGal.innerHTML = "Zdjęcia z galerii:  " + gallerieArr[nrInt][3]
+    
+    delete_Element() //usuwam wszystkie obrazki w galeri aktualnie wyświetlanej
+    var thumbCont = document.getElementById("thumbcontainer")
+    var nrOfPhotos = gallerieArr[nrInt][1]
+    for (i = 0; i < nrOfPhotos ; i++) {
+      var a_tag = document.createElement('a')
+      a_tag.href = urlsArr[nrInt][i][1]
+      a_tag.rel = "lightbox[all]"
+      thumbCont.appendChild(a_tag)
+      var div_tag = document.createElement('div')
+      div_tag.className = "imgcontainer"
+      a_tag.appendChild(div_tag)
+      div_tag.style.backgroundImage = 'url('+ urlsArr[nrInt][i][0] +')'
+      div_tag.style.backgroundRepeat = 'no-repeat'
+      div_tag.style.backgroundPosition = "center"
+    }
+    
+    setCointenrWidth(nrOfPhotos)
+    
+  }
+  
+  function setCointenrWidth(nrOfPhotos) {
+    var columns = parseInt( (window.innerWidth  - 100)/ 160)
+    var lines = parseInt(nrOfPhotos / columns)
+    var margin = parseInt((lines + 2) * 130)
+    document.getElementById("thumbcontainer").style.marginBottom = margin.toString() + 'px'
+  }
+
+  function delete_Element(){
+  var thumbCont = document.getElementById("thumbcontainer")
+  var tabTags = thumbCont.getElementsByTagName('a')
+  while (tabTags.length != 0) {
+   thumbCont.removeChild(tabTags[0])
+  }
+ }
+    
+  
+  </script>
+  
+</head>
+
+<body>
+  <div id="head"><div id="left_head"> </div> <div id="right_head">  </div></div>
+
+    <div id="menu">      
+      <ul>
+        <li><a href="news">Wydarzenia</a></li>
+        <li><a id="selected" href="#">Galeria</a></li>
+        <li><a  href="school">O szkole</a></li>
+         <li><a  href="parents">Rada Rodziców</a></li>
+      </ul>
+    </div>
+    
+ <div id="container"> 
+  <div id="index">
+  <table><tr>
+    <td style="width: 80px"> <img id="gp" src="style/previous.png" title="Poprzednie" onClick="get_previousGal()" /></td>
+    {% for g in galleries %} 
+    <td ><img style="border: 1px solid #fff" id="g{{g.nr}}" src="{{g.path}}" title="{{g.title}}"  onclick="draw_Gallery({{g.nr}})" alt="błąd" /></td> 
+    {% endfor %}
+    <td style="width: 80px"><img id="gn" src ="style/next.png" title="Następne" onClick="get_nextGal()"/></td>
+    </tr></table>  
+  </div>
+  
+  <script>
+  draw_galleries()
+  </script>
+    
+ 
+  <h3 id="galTitle" style="color: #ffffff;" >Zdjęcia w galerii: </h3>
+    <div id="thumbcontainer">
+   
+      <!-- <div class="imgcontainer" style="background-image: url(http://www.w3schools.com/js/compman.gif); width:150px; height:100px; background-position:center; " onClick="expand_fun()"></div> -->
+     
+    
+    
+  <script>
+  
+  draw_Gallery(0)
+  </script>
+ 
+  </div>
+  
+        <div id="footer"><br/><a href="http://" target="_blank">Admin: Mikołaj Sochacki</a> | <a href="" >Images by </a> | <a href="mailto:zkpig26@gmail.com">zkpig26@gmail.com</a> | <a href="http://www.dcarter.co.uk">Template by dcarter</a></div>
+  </div>
+   
+</body>
+</html>

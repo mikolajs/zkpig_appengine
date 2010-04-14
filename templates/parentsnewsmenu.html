@@ -1,0 +1,22 @@
+
+<div class="sidebaritem">
+<h1 id="barheader">Aktualności</h1>
+<div class="sbilinks">
+<ul>  
+ {% for post in posts%}
+ <li><a href="/parentsnews?nmb={{post.key}}">{{post.title}}</a></li>
+ {% endfor %}
+ </ul>
+ </div>
+</div>
+
+
+<div class="sidebaritem">
+ <div id="loginfo"> 
+    <h1>Użytkownik:</h1>{{ username }} <br />
+    <br/><a href="login?action={{loginfo}}&from=parents"> {{ loginfo }} </a>
+    {%if showcreate %}
+      <h4><a href="parentsarticle?action=insert">Dodaj artykuł</a></h4>
+    {% endif %}
+</div>
+</div>

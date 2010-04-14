@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>ZKPiG nr 26 w Gdańsku - Gimnazjum Sportowe nr 46 - Szkoła Podstawowa nr 70 - Gdańska Szkoła Floretu</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Mikołaj Sochacki">
+  <meta name="keywords" content="zkpig26 zkpig 26 gdańsk szermierka szkoła podstawowa 79 gimnazjum sportowe gdańska szkoła floretu">
+  <!-- **** layout stylesheet **** -->
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+
+</head>
+
+<body>
+  <div id="main">
+	<div id="links_container">	
+      
+      <div id="links">
+        
+      </div>
+    </div>
+    
+
+    <div id="menu">
+      <ul>
+        <!-- **** zmineić select dla innej podstrony **** -->
+        <li><a id="selected" href="news">Wydarzenia</a></li>
+        <li><a href="gallery">Galeria</a></li>
+        <li><a  href="school">O szkole</a></li>
+         <li><a  href="parents">Rada Rodziców</a></li>
+      </ul>
+    </div>
+
+
+    <div id="content">
+      <div id="column1">
+<div class="sidebaritem">
+<h1 id="barheader">Wydarzenia:</h1>
+<div class="sbilinks">
+<ul>  <!-- **** tekst musi być krótki w linkach!!! **** -->
+  <li><a href="/news?id=last">Nowości</a></li>
+  {% for department in departments %}
+ <li><a href="/news?id={{department.department}}">{{ department.department}}</a></li>
+
+ {% endfor %}
+ </ul>
+ </div>
+ 
+
+ <!-- logowanie-->
+</div> 
+    <div id="loginfo"> 
+    <br/><br/><br/>
+    user: {{ username }} 
+    <br/><a href="login?action={{loginfo}}&from=news"> {{ loginfo }} </a>
+    {%if showcreate %}
+      <h4><a href="article?action=insert&department={{ departmentShort }}">Dodaj artykuł <br/> w dziale {{ departmentShort }}</a></h4>
+    {% endif %}
+    </div>
+ <div><br /><br /><a href="http://comenius.org.pl" target="_blanck"><img src="style/comenius_oficial.png" /></a></div>
+ <div><br /><br /><a href="http://szermierka.pl" target="_blanck"><img src="style/sietom.jpg" /></a></div>
+ <div><br /><br /><a href="/school?id=sale_gimnastyczne" target="_self"><img src="style/gsf_logo.png" /></a></div>
+ <div><br /><br /><a href="http://eku.edu.pl" target="_blank"><img src="style/eku.jpg" /></a></div>
+</div>
+      
+
+
+
+    <div id="column2">
+      <div id="department"><h2>{{ departmentName }}</h2><hr/></div>
+        <div class="fixed">
+       {{ content }}
+        </div>
+      </div>
+    </div>
+
+
+    <div id="footer">
+      <a href="http://" target="_blank">Admin: Mikołaj Sochacki</a> | <a href="" >Images by </a> | <a href="mailto:zkpig26@gmail.com">zkpig26gdansk@gmail.com</a> | <a href="http://www.dcarter.co.uk">Template by dcarter</a>
+    </div>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>ZKPiG nr 26 w Gdańsku</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Mikołaj Sochacki">
+  <meta name="keywords" content="zkpig26 zkpig 26 gdańsk szermierka szkoła podstawowa 79 gimnazjum sportowe gdańska szkoła floretu">
+
+  <!-- **** layout stylesheet **** -->
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+
+</head>
+
+<body>
+  <div id="main">
+  <div id="links_container_parent">  
+      
+      <div id="links">
+        
+      </div>
+    </div>
+    
+
+    <div id="menu">
+      <ul>
+        <!-- **** zmineić select dla innej podstrony **** -->
+        <li><a href="news">Wydarzenia</a></li>
+        <li><a href="gallery">Galeria</a></li>
+        <li><a  href="school">O szkole</a></li>
+        <li><a id="selected" href="">Rada Rodziców</a></li>
+      </ul>
+    </div>
+
+
+    <div id="content">
+      <div id="column1">
+<div class="sidebaritem">
+<h1 id="barheader">Menu</h1>
+<div class="sbilinks">
+<ul>  <!-- **** tekst musi być krótki w linkach!!! **** -->
+ <li><a href="/parents?id=parentsinfo">Strona główna</a></li>
+ </ul>
+ </div>
+ 
+ 
+
+ 
+</div>
+
+ {{menu}}
+ 
+</div>
+      
+
+
+
+      <div id="column2">
+
+  <div class="fixed">
+  
+        <div class="short">
+        <h1>{{ parentPost.title }}</h1>
+  
+    <p id="info"><img src="style/author_mini.png" /> Rada Rodziców <img src="style/data_mini.png" /> {{ parentPost.creation_dateStr }}  </p>
+      {% if parentPost.img0 %} <br /><img src="img?img_idP={{parentPost.key}}&nr=0" /> {% endif %}
+        <p>
+          {{ parentPost.body}}
+        </p>
+       {% if loged %}<p id="readmore"><a href="/parentsarticle?action=alter&nmb={{parentPost.key}}">Edytuj zawartość...</a></p><hr /> {% endif %}
+      </div>
+      </div>
+
+  </div>
+    </div>
+
+
+    <div id="footer">
+      <a href="http://" target="_blank">Admin: Mikołaj Sochacki</a> | <a href="" >Images by </a> | <a href="mailto:zkpig26@poczta.internetdsl.pl">e-mail:zkpig26</a> | <a href="http://www.dcarter.co.uk">Template by dcarter</a>
+    </div>
+  </div>
+</body>
+</html>

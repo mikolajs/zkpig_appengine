@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>Edycja postów</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Mikołaj Sochacki">
+  <meta name="keywords" content="zkpig26 zkpig 26 gdańsk szermierka szkoła podstawowa 79 gimnazjum sportowe gdańska szkoła floretu">
+  <!-- **** layout stylesheet **** -->
+  <link rel="stylesheet" type="text/css" href="style/forms.css" />
+ <script type="text/javascript">
+ 
+ function insertImg(what) {
+    var textareaTag = document.getElementsByName('body')[0]
+    var cont = textareaTag.value.substring(0,textareaTag.selectionStart)
+    cont += what
+    cont += textareaTag.value.substring(textareaTag.selectionStart,textareaTag.value.length) 
+    textareaTag.value = cont
+  }
+  
+  function insertTags(what) {
+     var textareaTag = document.getElementsByName('body')[0]
+     var cont = textareaTag.value.substring(0,textareaTag.selectionStart)
+     cont += ' [' + what + '] '
+     cont += textareaTag.value.substring(textareaTag.selectionStart,textareaTag.selectionEnd)
+     cont += ' [/' + what + '] '
+     cont += textareaTag.value.substring(textareaTag.selectionEnd,textareaTag.value.length) 
+     textareaTag.value = cont
+  }
+  
+  function insertLink() {
+     var textareaTag = document.getElementsByName('body')[0]
+     if (textareaTag) { 
+       var urlSite= prompt("Podaj pełen adres URL:","")
+       if (!urlSite) return 
+       var cont = textareaTag.value.substring(0,textareaTag.selectionStart)
+       cont += ' [l=' + urlSite + '] '
+       var temp = textareaTag.value.substring(textareaTag.selectionStart,textareaTag.selectionEnd)
+       if (trim(temp) != "") {
+         cont += temp
+       }
+       else {
+         cont += urlSite.substring(0,40)
+       }
+       cont += ' [/l] '
+       cont += textareaTag.value.substring(textareaTag.selectionEnd,textareaTag.value.length) 
+       textareaTag.value = cont
+     }
+  }
+  
+  function trim(str) {
+    for (i = 0; i < str.length -1; i++) {
+      if ((str[i] == " ") ||(str[i] == "\\t") || (str[i] == "\\n") ) str = str.substring(i+1,str.length)
+    }
+    for (i = str.length -1; i >= 0; i--) {
+      if ((str[i] == " ") ||(str[i] == "\\t") || (str[i] == "\\n")) str = str.substring(0,i)
+    }
+    return str
+  }
+ 
+ 
+ </script>
+</head>
+
+<body>
+        
+        <div> <h2>{{ edit_info }}</h2> </div>
+    
+  <form  enctype="multipart/form-data" method="POST">
+  <input  type="hidden" name="department" value="{{department}}">
+    <table class="table-list" >
+      <tr>
+        <td class="table-input-label">Tytuł:</td>
+        <td class="table-input" >
+          <input
+            class="text-input"
+            type="text"
+            name="title"
+            value="{{post.title}}"/>
+        </td>
+      </tr>
+      <tr><td>Obrazek tytułowy:</td><td><input type="file" name="img0"> </td></tr>
+    </table>
+    <table>
+      <tr>
+      <td><small>Zaznacz miejsce lub edytowany tekst do wyróżnienia i wciśnij przycisk:</small></td>
+      <td><input class="box" type="button" name="bbc" value="[b]" title="wytłuść" onclick="insertTags('b')"/></td>
+      <td><input class="box" type="button" name="bbc" value="[i]" title="pochyl" onclick="insertTags('i')"/></td>
+      <td><input class="box" type="button" name="bbc" value="[u]" title="podkreśl" onclick="insertTags('u')"/></td>
+      <td><input class="box" type="button" name="bbc" value="[l]" title="link" onclick="insertLink()"/></td>
+      <td><input class="small" type="button" name="bbc" value="img1" title="Pierwszy dodatkowy obrazek" onclick="insertImg('[img1]')"/></td>
+      <td><input class="small" type="button" name="bbc" value="img2" title="Drugi dodatkowy obrazek" onclick="insertImg('[img2]')"/></td>
+      <td><input class="small" type="button" name="bbc" value="img3" title="Trzeci dodatkowy obrazek" onclick="insertImg('[img3]')"/></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td class="table-input-label">Treść artykułu:</td>
+        <td class="table-input">
+          <textarea class="textarea-large" name="body">{{post.body}}</textarea>
+        </td>
+      </tr>
+      </table>
+      <table>   
+      <tr><td><input class="small" type="button" name="bbc" value="img1" onclick="insertImg('[img1]')"/></td> <td></td><td><input  type="file" name="img1"> </td></tr>
+      <tr><td><input class="small" type="button" name="bbc" value="img2" onclick="insertImg('[img2]')"/></td> <td></td><td><input type="file" name="img2"> </td></tr>
+      <tr><td><input class="small" type="button" name="bbc" value="img3" onclick="insertImg('[img3]')"/></td> <td></td><td><input type="file" name="img3"> </td></tr>
+      </table>
+    <table>
+      <tr>
+        <td class="table-input"><input type="submit" name="choice" value="Zapisz"></td>
+        <td class="table-input"><input type="submit" name="choice" value="Anuluj"> </td>
+        <td class="table-input"><input type="submit" name="choise" value="Usuń"></td>
+      </tr>
+      
+    </table>
+  </form> 
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>ZKPiG nr 26 w Gdańsku</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Mikołaj Sochacki">
+  <meta name="keywords" content="zkpig26 zkpig 26 gdańsk szermierka szkoła podstawowa 79 gimnazjum sportowe gdańska szkoła floretu">
+
+  <!-- **** layout stylesheet **** -->
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+
+</head>
+
+<body>
+  <div id="main">
+  <div id="links_container_parent">  
+      
+      <div id="links">
+        
+      </div>
+    </div>
+    
+
+    <div id="menu">
+      <ul>
+        <!-- **** zmineić select dla innej podstrony **** -->
+        <li><a href="news">Wydarzenia</a></li>
+        <li><a href="gallery">Galeria</a></li>
+        <li><a  href="school">O szkole</a></li>
+        <li><a id="selected" href="">Rada Rodziców</a></li>
+      </ul>
+    </div>
+
+
+    <div id="content">
+      <div id="column1">
+<div class="sidebaritem">
+<h1 id="barheader">Menu</h1>
+<div class="sbilinks">
+<ul>  <!-- **** tekst musi być krótki w linkach!!! **** -->
+ <li><a href="/parents">Strona główna</a></li>
+ </ul>
+ </div>
+ 
+ 
+
+ <!-- tu dodać linki do ostatnich newsów -->
+</div>
+
+ {{menu}}
+
+
+</div>
+      
+
+
+
+      <div id="column2">
+
+  <div class="fixed">
+      
+      <h1>Rada Rodziców i Rada Szkoły</h1>
+Na stronie można znaleźć wydarzenia i informacje przekazywane przez Radę Rodziców. Znajdą się tu tematy poruszane przez rodziców w korespondencji do Rady Rodziców. W celu poruszenia ważnego tematu, proszę skorzystać z formularza kontaktowego.
+<br/><br/>
+<h2>Obecnie funkcje pełnią:</h2>
+ <ul><li> Rada Szkoły:</li><ul>
+          <li>Ryszard Sobczak - przewodniczący, M. Czerwińska, J. Drapella - rodzice</li>
+         <li>B. Hildebrand, R. Karzarnowicz, E. Stanisławska, M. Wierzchowska - nauczyciele</li></ul>
+   <li> Rada Rodziców:</li><ul>
+          <li> Izabela Szewczyk - przewodnicząca</li></ul>
+          <br/><br/>
+          
+          <h2>Kontakt z Radą Rodziców i Radą Szkoły.</h2>
+<div>Poniżej możesz przekazać informację, która zostanie przeczytana wyłącznie przez członków Rady Rodziców. Prosimy o podanie swoich danych kontaktowych i nie zamieszczanie anonimów.  </div>
+<br/><hr/><br/>
+<h2> Formularz do przekazywania informacji:</h2>
+ <form id="form" enctype="multipart/form-data" method="post">
+  <br/><br/>
+  <table> <tr><td>Treść:</td></tr><tr><td><textarea class="big"  name="content"> </textarea></td></tr></table>
+  <table>
+  <tr><td width="150px" >Podpis </td><td><input class="inp" type="text" name="signature" /></td></tr>
+  <tr><td width="150px">Adres mail: <small>(opcjonalnie)</small></td><td><input class="inp" type="text" name="email"/></td></tr>
+  </table>
+  
+  <table><tr><td> <input onclick="checkProper()" class="inp" type="submit" name="save" value="Wyślij" size="10"/> </td></tr></table>
+  </form>
+      <br/>
+        {% if send%}<h3><i>Wiadomość została wysłana</i></h3>{% endif %}
+      </div>
+
+
+  </div>
+    </div>
+
+
+    <div id="footer">
+      <a href="http://" target="_blank">Admin: Mikołaj Sochacki</a> | <a href="" >Images by </a> | <a href="mailto:zkpig26@poczta.internetdsl.pl">e-mail:zkpig26</a> | <a href="http://www.dcarter.co.uk">Template by dcarter</a>
+    </div>
+  </div>
+</body>
+</html>

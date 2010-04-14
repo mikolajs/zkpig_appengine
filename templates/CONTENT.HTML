@@ -1,0 +1,12 @@
+{% for post in posts %}
+  <div class="short">
+        <a href="/pieceofnews?id={{post.key}}"><h1>{{ post.title }}</h1></a>
+    <p id="info"><img src="style/author_mini.png" /> {{ post.author.name }} <img src="style/data_mini.png" /> {{ post.creation_dateStr }}  <img src="style/folder_icon_01.png" />  {{post.department.department}}</p>
+  {% if post.img0 %} <br /><img src="img?img_id={{post.key}}&nr=0" /> {% endif %}
+        <p>
+          {{ post.body}}
+        </p>
+       <p id="readmore"><a href="/pieceofnews?&id={{post.key}}">Czytaj dalej...</a></p><hr /> 
+      </div>
+      
+ {% endfor %}

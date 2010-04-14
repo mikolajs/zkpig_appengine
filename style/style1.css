@@ -1,0 +1,82 @@
+/* global */
+html 
+{height: 100%;
+background: #ddddff;
+}
+
+body
+{ font-family: arial, sans-serif;
+  background: #ffffff;
+  padding: 10px;
+  margin: 50px;
+  font-size: .78em;
+  border: solid blue;
+  width: 980px;
+}
+
+p
+{ margin: 0px;
+  padding: 0px 0px 16px 0px;
+  line-height: 1.7em;
+}
+
+input 
+{ width: 300px;
+}
+
+#button 
+{ width: 80px;
+}
+
+h1
+{ font-size: 125%;
+  letter-spacing: .1em;
+  color: #1B248D;
+}
+
+h2
+{ margin: 10px;
+  padding: 5px 5px 5px 5px;
+  font-size: 100%;
+  letter-spacing: .1em;
+}
+
+img{border: 0px;}
+
+a{outline: none;}
+
+table {
+  border-spacing: 10px 0px;
+  border-collapse: 
+}
+
+#new-post-form INPUT {
+  width: 100%;
+}
+.table-input-label {
+  width:20%;
+}
+TBODY TD {
+  padding: 0 0 5px 0;
+}
+INPUT.text-input {
+  width: 500px;
+}
+
+TEXTAREA.text-input {
+  width: 100%;
+  height:400px;
+}
+TEXTAREA.textarea-large {
+  height: 400px ;
+  width: 100%;
+}
+TEXTAREA.textarea-med {
+  height: 100px;
+  width: 75%;
+}
+TEXTAREA.textarea-small {
+  height: 50px;
+  width: 50%;
+}
+

@@ -1,0 +1,51 @@
+
+application: zkpig26
+version: 2
+runtime: python
+api_version: 1
+
+handlers:
+
+- url: /style
+  static_dir: style
+  
+- url: /static
+  static_dir: static
+  
+- url: /sitemap.xml
+  script: sitemap.py
+  
+- url: /robots.txt
+  script: sitemap.py
+
+- url: /admin/(.*)
+  script: app.py
+  
+- url: /user/(.*)
+  script: app.py
+  
+- url: /_ah/mail/.+
+  script: handle_incoming_email.py
+  login: admin
+
+- url: /.*
+  script: app.py
+  
+  
+inbound_services:
+- mail
+
+
+
+skip_files: |
+  ^(.*/)?(
+  (app\.yaml)|
+  (app\.yml)|
+  (index\.yaml)|
+  (index\.yml)|
+  (COPYING)|
+  (#.*#)|
+  (.*\.swp)|
+  (.*~)|
+  (.*\.py[co?])|
+  (\..*))$
